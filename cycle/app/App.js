@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -18,14 +18,40 @@ import {
 import LoginScreen from './screens/Login/Login'
 import colors from './config/colors';
 
+import auth from '@react-native-firebase/auth';
+
 const App: () => React$Node = () => {
+
+  const [initilizing, setInitilizing] = useState(true);
+  const [user, setUser] = useState();
+ 
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initilizing) setInitilizing(false);
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  if (initilizing) return null;
+
+  if (!user) {
+    return (
+      <>
+        <StatusBar barStyle="dark-content" />
+        <View style={styles.scrollView}>
+            <LoginScreen />
+        </View>
+      </>
+    );
+  }
+
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <View style={styles.scrollView}>
-          <LoginScreen />
-      </View>
-    </>
+    <View>
+      <Text>Welcome {user.email}</Text>
+    </View>
   );
 };
 
