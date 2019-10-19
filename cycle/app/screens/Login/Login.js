@@ -5,7 +5,7 @@ import FormTextInput from './../../components/FormTextInput';
 import Button from "./../../components/Button";
 import strings from './../../config/strings';
 import colors from './../../config/colors';
-import logo from './../../assets/images/caremelogo.png';
+import logo from './../../assets/images/cycle-logo.png';
 import googleLogo from './../../assets/images/google-logo.png';
 import facebookLogo from './../../assets/images/facebook-logo.png';
 
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     paddingTop: 50,
+    marginLeft: 70,
     resizeMode: "contain",
     alignSelf: "center"
   }, 
