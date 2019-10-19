@@ -12,6 +12,7 @@ import {
   StyleSheet,
   ScrollView,
   View,
+  Text,
   StatusBar,
 } from 'react-native';
 
@@ -26,6 +27,7 @@ const App: () => React$Node = () => {
   const [user, setUser] = useState();
  
   function onAuthStateChanged(user) {
+    console.log('USER', user);
     setUser(user);
     if (initilizing) setInitilizing(false);
   }

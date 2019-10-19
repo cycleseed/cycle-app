@@ -9,10 +9,19 @@ import logo from './../../assets/images/cycle-logo.png';
 import googleLogo from './../../assets/images/google-logo.png';
 import facebookLogo from './../../assets/images/facebook-logo.png';
 
+import auth from '@react-native-firebase/auth';
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
+  async function register() {
+    try {
+      await auth().createUserWithEmailAndPassword(email, password);
+    } catch (e) {
+      console.error(e.message);
+    }
+  }
   return (
     <View style={styles.container}>
       <Image source={logo} style={styles.logo} />
@@ -27,7 +36,10 @@ function Login() {
           onChangeText={(password) => setPassword(password)}
           placeholder={strings.PASSWORD_PLACEHOLDER}
         />
-         <Button label={strings.LOGIN} onPress={() => console.log('login')} />
+         <Button 
+          label={strings.LOGIN} 
+          onPress={() => register()} 
+        />
         <View style={styles.division}>
           <View style={styles.divisionLine}></View>
           <Text style={styles.divisionText}>OR</Text>
@@ -35,14 +47,14 @@ function Login() {
         </View>
         <Button 
           label={strings.LOGIN_FB} 
-          onPress={() => console.log('login')} 
+          onPress={() => console.log('login facebook')} 
           image={<Image source={facebookLogo} style={styles.brand}/>}
           touchableOpacityStyle={styles.buttonBranded}
           textStyle={styles.buttonBrandedText}
         />
         <Button 
           label={strings.LOGIN_GOOGLE} 
-          onPress={() => console.log('login')} 
+          onPress={() => console.log('login google')} 
           image={<Image source={googleLogo} style={styles.brand}/>}
           touchableOpacityStyle={styles.buttonBranded}
           textStyle={styles.buttonBrandedText}
