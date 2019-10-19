@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 
 import FormTextInput from './../../components/FormTextInput';
 import strings from './../../config/strings';
 import colors from './../../config/colors';
+import logo from './../../assets/images/caremelogo.png';
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -11,6 +12,7 @@ function Login() {
   
   return (
     <View style={styles.container}>
+      <Image source={logo} style={styles.logo} />
       <View style={styles.form}>
         <FormTextInput 
           value={email}
@@ -34,6 +36,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around"
   },
+  logo: {
+    flex: 1,
+    width: "100%",
+    resizeMode: "contain",
+    alignSelf: "center"
+  }, 
   form: {
     flex: 1,
     justifyContent: "center",
