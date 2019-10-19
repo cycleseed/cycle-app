@@ -8,19 +8,27 @@ class QRScanner extends React.Component {
 
   state = {
     barcodes: [],
-    userDetected: ''
+    userDetected: '',
+    cycleUser: null
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.state.userDetected !== prevState.userDetected) {
+      console.log('jalalo de firebase mano');
+    }
   }
 
   barcodeRecognized = ({ barcodes }) => {
-    this.setState({ barcodes });
-    return setTimeout(() => {
-      this.setState({ barcodes: []});
-    }, 1000)
+    const scan = barcodes[0];
+    const equals = scan.data === this.state.userDetected;
+    if (equals) {
+      console.log('ES IGUAL')
+    } else {
+      this.setState({ barcodes, userDetected: scan.data });
+    }
   } 
 
   renderBarcode = ({ bounds, data }) => {
-    console.log('data', data);
-    console.log('bounds', bounds);
     return (
       <React.Fragment key={data + bounds.origin.x}>
         <View
@@ -50,6 +58,7 @@ class QRScanner extends React.Component {
   );
 
   render() {
+    console.log('STATE', this.state);
     return (
           <RNCamera
             ref={ref => {
@@ -60,7 +69,10 @@ class QRScanner extends React.Component {
           >
           {this.renderBarcodes()}
           <View style={styles.test}>
-            <Text>Hoola bro</Text>
+            { this.state.cycleUser ? (
+              <Text>Hoola bro</Text>
+              ) : null
+            }
           </View>
           </RNCamera>
     );
