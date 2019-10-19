@@ -22,26 +22,19 @@ const App: () => React$Node = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <View style={styles.body}>
-           <LoginScreen />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+      <View style={styles.scrollView}>
+          <LoginScreen />
+      </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
   scrollView: {
+    flex: 1,
+    justifyContent: "center",
     backgroundColor: colors.WHITE,
-  },
-  body: {
-    backgroundColor: colors.WHITE,
-  },
+  }
 });
 
 export default App;
