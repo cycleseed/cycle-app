@@ -6,8 +6,8 @@ import Button from "./../../components/Button";
 import strings from './../../config/strings';
 import colors from './../../config/colors';
 import logo from './../../assets/images/caremelogo.png';
-import googleLogo from './../../assets/images/btn_google_light_normal_hdpi.9.png';
-import facebookLogo from './../../assets/images/btn_google_light_normal_hdpi.9.png';
+import googleLogo from './../../assets/images/google-logo.png';
+import facebookLogo from './../../assets/images/facebook-logo.png';
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -36,12 +36,16 @@ function Login() {
         <Button 
           label={strings.LOGIN_FB} 
           onPress={() => console.log('login')} 
-          mage={<Image source={facebookLogo} />}
+          image={<Image source={facebookLogo} style={styles.brand}/>}
+          touchableOpacityStyle={styles.buttonBranded}
+          textStyle={styles.buttonBrandedText}
         />
         <Button 
-          label={strings.LOGIN_FB} 
+          label={strings.LOGIN_GOOGLE} 
           onPress={() => console.log('login')} 
-          image={<Image source={googleLogo} />}
+          image={<Image source={googleLogo} style={styles.brand}/>}
+          touchableOpacityStyle={styles.buttonBranded}
+          textStyle={styles.buttonBrandedText}
         />
       </View>
     </View>
@@ -83,7 +87,23 @@ const styles = StyleSheet.create({
   divisionText: {
     color: 'rgba(0,0,0,.4)',
     alignSelf: 'center'
-  } 
+  },
+  brand: {
+    width: "12%",
+    resizeMode: "contain",
+    alignSelf: "center",
+    marginRight: 20
+  },
+  buttonBranded: {
+    height: 50,
+    flexDirection: 'row',
+    backgroundColor: colors.WHITE,
+    marginBottom: 30
+  },
+  buttonBrandedText: {
+    color: colors.BLACK,
+    fontSize: 16
+  }
 })
 
 export default Login;

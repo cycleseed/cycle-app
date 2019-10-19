@@ -16,7 +16,9 @@ class Button extends React.Component {
 
     return (
       <TouchableOpacity style={[styles.container, touchableOpacityStyle]} onPress={onPress}>
-        { image && null }
+        { image ? (
+          image
+        ) : null }
         <Text style={[styles.text, textStyle]}>{label}</Text>
       </TouchableOpacity>
     );
@@ -33,7 +35,15 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 4,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "rgba(255,255,255,0.7)"
+    borderColor: "rgba(255,255,255,0.7)",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 2.22,
+    elevation: 3,
   },
   text: {
     color: colors.WHITE,
