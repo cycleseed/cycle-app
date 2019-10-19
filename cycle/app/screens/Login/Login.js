@@ -6,6 +6,8 @@ import Button from "./../../components/Button";
 import strings from './../../config/strings';
 import colors from './../../config/colors';
 import logo from './../../assets/images/caremelogo.png';
+import googleLogo from './../../assets/images/btn_google_light_normal_hdpi.9.png';
+import facebookLogo from './../../assets/images/btn_google_light_normal_hdpi.9.png';
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -26,11 +28,21 @@ function Login() {
           placeholder={strings.PASSWORD_PLACEHOLDER}
         />
          <Button label={strings.LOGIN} onPress={() => console.log('login')} />
-      </View>
-      <View style={styles.division}>
-        <View style={styles.divisionLine}></View>
-        <Text style={styles.divisionText}>OR</Text>
-        <View style={styles.divisionLine}></View>
+        <View style={styles.division}>
+          <View style={styles.divisionLine}></View>
+          <Text style={styles.divisionText}>OR</Text>
+          <View style={styles.divisionLine}></View>
+        </View>
+        <Button 
+          label={strings.LOGIN_FB} 
+          onPress={() => console.log('login')} 
+          mage={<Image source={facebookLogo} />}
+        />
+        <Button 
+          label={strings.LOGIN_FB} 
+          onPress={() => console.log('login')} 
+          image={<Image source={googleLogo} />}
+        />
       </View>
     </View>
   );
@@ -46,16 +58,17 @@ const styles = StyleSheet.create({
   logo: {
     flex: 1,
     width: "100%",
+    paddingTop: 50,
     resizeMode: "contain",
     alignSelf: "center"
   }, 
   form: {
-    flex: 1,
+    flex: 3,
     justifyContent: "center",
     width: "80%"
   },
   division: {
-    flex: 1,
+    marginVertical: 20,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'stretch',
@@ -69,6 +82,7 @@ const styles = StyleSheet.create({
   }, 
   divisionText: {
     color: 'rgba(0,0,0,.4)',
+    alignSelf: 'center'
   } 
 })
 

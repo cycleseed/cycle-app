@@ -4,10 +4,20 @@ import colors from "../config/colors";
 
 class Button extends React.Component {
   render() {
-    const { label, onPress } = this.props;
+
+    const { 
+      label, 
+      onPress, 
+      textStyle, 
+      touchableOpacityStyle, 
+      image,
+      ...otherProps 
+    } = this.props;
+
     return (
-      <TouchableOpacity style={styles.container} onPress={onPress}>
-        <Text style={styles.text}>{label}</Text>
+      <TouchableOpacity style={[styles.container, touchableOpacityStyle]} onPress={onPress}>
+        { image && null }
+        <Text style={[styles.text, textStyle]}>{label}</Text>
       </TouchableOpacity>
     );
   }
