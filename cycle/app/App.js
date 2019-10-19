@@ -26,9 +26,10 @@ const App: () => React$Node = () => {
 
   const [initilizing, setInitilizing] = useState(true);
   const [user, setUser] = useState();
+  
+  const [detectedUser, setDetecetedUser] = useState(null);
  
   function onAuthStateChanged(user) {
-    console.log('USER', user);
     setUser(user);
     if (initilizing) setInitilizing(false);
   }
@@ -51,11 +52,24 @@ const App: () => React$Node = () => {
     );
   }
 
+  if (detectedUser) {
+    return (
+      <>
+        <StatusBar barStyle="dark-content" />
+        <View style={styles.scrollView}>
+          <Text>Welcome detectedUser</Text>
+        </View>
+      </>
+    )
+  }
+
   return (
-    <View style={styles.scrollView}>
-      <Text>Welcome {user.email}</Text>
-      <QRScanner />
-    </View>
+    <>
+      <StatusBar barStyle="dark-content" />
+      <View style={styles.cameraView}>
+        <QRScanner setDetecetedUser={setDetecetedUser}/>
+      </View>
+    </>
   );
 };
 
@@ -64,6 +78,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: colors.WHITE,
+  },
+  cameraView: {
+    flex: 1
   }
 });
 

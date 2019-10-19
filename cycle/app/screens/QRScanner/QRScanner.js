@@ -1,12 +1,14 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 import { RNCamera } from 'react-native-camera';
+import colors from '../../config/colors';
 
 class QRScanner extends React.Component {
 
   state = {
     barcodes: [],
+    userDetected: ''
   }
 
   barcodeRecognized = ({ barcodes }) => {
@@ -49,20 +51,37 @@ class QRScanner extends React.Component {
 
   render() {
     return (
-      <RNCamera
-        ref={ref => {
-          this.camera = ref;
-        }}
-        style={{
-          flex: 1,
-          width: '100%',
-        }}
-        onGoogleVisionBarcodesDetected={this.barcodeRecognized}
-      >
-      {this.renderBarcodes()}
-      </RNCamera>
+          <RNCamera
+            ref={ref => {
+              this.camera = ref;
+            }}
+            style={styles.cameraSection}
+            onGoogleVisionBarcodesDetected={this.barcodeRecognized}
+          >
+          {this.renderBarcodes()}
+          <View style={styles.test}>
+            <Text>Hoola bro</Text>
+          </View>
+          </RNCamera>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  userSection: {
+    flex: 1,
+  },
+  cameraSection: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'flex-end',
+    borderColor: colors.BLACK
+
+  },
+  test: {
+    height: 300,
+    backgroundColor: colors.WHITE,
+  }
+})
 
 export default QRScanner;
