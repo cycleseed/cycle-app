@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, Text } from 'react-native';
 
 import FormTextInput from './../../components/FormTextInput';
 import Button from "./../../components/Button";
@@ -27,6 +27,11 @@ function Login() {
         />
          <Button label={strings.LOGIN} onPress={() => console.log('login')} />
       </View>
+      <View style={styles.division}>
+        <View style={styles.divisionLine}></View>
+        <Text style={styles.divisionText}>OR</Text>
+        <View style={styles.divisionLine}></View>
+      </View>
     </View>
   );
 }
@@ -36,7 +41,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.WHITE,
     alignItems: "center",
-    justifyContent: "space-around"
+    justifyContent: "center"
   },
   logo: {
     flex: 1,
@@ -48,8 +53,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     width: "80%"
-  }
-  
+  },
+  division: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+  },
+  divisionLine: {
+    flex: 1, 
+    height: 10,
+    marginHorizontal: 20,
+    borderColor: 'rgba(0,0,0,.4)',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  }, 
+  divisionText: {
+    color: 'rgba(0,0,0,.4)',
+  } 
 })
 
 export default Login;
