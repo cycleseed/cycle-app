@@ -13,7 +13,6 @@ function Login() {
         onChangeText={(email) => setEmail(email)}
         placeholder={'mail'}
       />
-      <Text>Hola</Text>
     </View>
   );
 }
