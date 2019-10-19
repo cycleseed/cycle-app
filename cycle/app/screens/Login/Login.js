@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 
 import FormTextInput from './../../components/FormTextInput';
+import Button from "./../../components/Button";
 import strings from './../../config/strings';
 import colors from './../../config/colors';
 import logo from './../../assets/images/caremelogo.png';
@@ -24,6 +25,7 @@ function Login() {
           onChangeText={(password) => setPassword(password)}
           placeholder={strings.PASSWORD_PLACEHOLDER}
         />
+         <Button label={strings.LOGIN} onPress={() => console.log('login')} />
       </View>
     </View>
   );
