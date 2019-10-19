@@ -20,6 +20,7 @@ import LoginScreen from './screens/Login/Login'
 import colors from './config/colors';
 
 import auth from '@react-native-firebase/auth';
+import QRScanner from './screens/QRScanner/QRScanner';
 
 const App: () => React$Node = () => {
 
@@ -51,8 +52,9 @@ const App: () => React$Node = () => {
   }
 
   return (
-    <View>
+    <View style={styles.scrollView}>
       <Text>Welcome {user.email}</Text>
+      <QRScanner />
     </View>
   );
 };
